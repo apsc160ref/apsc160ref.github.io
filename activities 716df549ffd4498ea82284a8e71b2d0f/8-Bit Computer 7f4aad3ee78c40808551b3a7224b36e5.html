@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>8-Bit Computer</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7f4aad3e-e78c-4080-8551-b3a7224b36e5" class="page sans"><header><h1 class="page-title">8-Bit Computer</h1></header><div class="page-body"><p id="36449047-91cf-4ce8-b68f-1ce6ba875815" class="block-color-yellow_background"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Project Overview:</mtext></mrow><annotation encoding="application/x-tex">\text{Project Overview:}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">Project Overview:</span></span></span></span></span></span><span>﻿</span></span></p><figure id="1a2a426d-2ae7-4c89-9681-19b562a62cdf" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled.png"><img style="width:1116px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled.png"/></a></figure><p id="f6e9df66-178e-4bb1-9b36-7a56bb3372e0" class="block-color-yellow_background"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Demonstrated Skills:</mtext></mrow><annotation encoding="application/x-tex">\text{Demonstrated Skills:}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text"><span class="mord">Demonstrated Skills:</span></span></span></span></span></span><span>﻿</span></span></p><ol type="1" id="11e2d846-6f5f-42cd-b034-7dcefdf7fc45" class="numbered-list" start="1"><li>Soldering, Circuit, and PCB Design</li></ol><ol type="1" id="5396b5f1-026f-4028-a584-c7f4ca580550" class="numbered-list" start="2"><li>Breadboard Prototyping and Lab Techniques (oscilloscope, multimeter, etc.)</li></ol><ol type="1" id="5cfec467-d477-49fa-a1a3-8fa375a451cf" class="numbered-list" start="3"><li>Microprocessor architecture</li></ol><ol type="1" id="5f7b9a20-be8d-4039-9747-307fe8c28fe3" class="numbered-list" start="4"><li>FPGA Testing</li></ol><p id="27cdd237-e03d-47ec-9fd0-9d80436797d9" class="block-color-yellow_background"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>History + Outline:</mtext></mrow><annotation encoding="application/x-tex">\text{History + Outline:}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">History + Outline:</span></span></span></span></span></span><span>﻿</span></span></p><p id="737e61d4-b450-4eba-a8d1-4a344da60138" class="">From late 2020 to mid 2021, this 8-bit computer was my first introduction to computer architecture and digital logic. I was initially inspired by Ben Eater’s model, but here I’ve outlined several of the improvements and changes I’ve made to extend the architecture. I presented this project at the 2021 (provincial level) Greater Vancouver Science Fair, receiving Senior Bronze Divisional.</p><hr id="f0204192-e51e-4313-b04d-00438f3ed3f0"/><h1 id="2660be3e-2529-49a3-ba79-6270e9d4e190" class="">1. Baseline</h1><p id="e9800dc5-1246-4f3f-a72f-8e97bc142480" class="">I’m not going to go too in-depth here, since the baseline computer is derived from Ben Eater’s model, which you can find here: <a href="https://eater.net/8bit/">https://eater.net/8bit/</a>. The first version of this CPU was made on an array of breadboards, which I later soldered onto circuit boards.</p><figure id="7de01d32-1011-400e-bf1c-43d07369936e" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%201.png"><img style="width:1060px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%201.png"/></a></figure><p id="fe8b8c0f-b0c8-45c3-8428-502bc63d9166" class="">Alongside the logic itself, I also had to make an auxiliary EEPROM programmer to implement the control logic of the CPU. It’s not as sophisticated as Ben Eater’s shift register programmer, but it gets the job done.</p><blockquote id="8bcecde9-dcbd-4674-8c20-3d7c929c8ec4" class="">An ATTINY85 (bottom left) was used to generate &lt;1000 ns clock pulses to write to the AT28C16.<figure id="27fd2f6c-054f-4124-a4fc-1ed6ec364bce" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%202.png"><img style="width:989px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%202.png"/></a></figure></blockquote><p id="72563ec7-e50d-45a7-98c4-4dbed26eb8e7" class="">One regret I had in this stage was not using an FPGA or similar large IO device for the control logic. Debugging, writing, and reading EEPROM contents became increasingly challenging down the line, which ended up being one of the largest hurdles in this project.</p><p id="5e37fe95-f05a-4521-8b51-38c1c67e1d12" class="">My final build was as follows, and here I replaced the breadboards with perf-boards and chip sockets instead, soldering the components on for stability (a lot of the wiring here is on the underside!).</p><figure id="8d403299-32e5-45ac-a967-dcc1c7612e09" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%203.png"><img style="width:669px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%203.png"/></a></figure><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="5bd8afc4-964c-42c7-bbab-401de66ad1ad"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Referring to my earlier disclaimer,  this project was made before the idea of this website was conceived, so I don’t have many pictures of the physical product. Currently, the CPU and my modifications are in a storage unit; the next time I get my hands on it I’ll make sure to take some pictures and add them to the sections below.</div></figure><h1 id="4dd08d4a-9ef9-49fe-a27c-4149aba2b711" class="">2. Conditional Programs</h1><p id="7faca300-9352-4b83-8d81-6e125756b670" class="">Implementing conditional execution was my largest improvement and what I presented at the Greater Vancouver Science Fair (Provincial). Instead of a standalone modules like RAM or registers, this device synthesizes the RAM, ALU (arithmetic logic unit), and program counter together. </p><h2 id="9279436e-009f-407b-bdde-a4a2189bf0e3" class="">Introducing Jumps <code>(long read ahead)</code></h2><p id="34ada728-3a70-4b5c-a979-3e95699e46e1" class="">Before I outline how this module was made, I should explain what I mean by “jumping”. In fact, this proverbial “module” I’ve been referring to is, what I like to call, a jump splitter — you’re learn why that is here.</p><p id="ef6e0eaf-1981-4443-b3c9-2d46e7d521da" class="">First a small review on what the program counter is. The program counter (PC) is simply a binary counter. When it increments, it sends its count to the RAM, and the RAM returns what instruction should be next executed, which is passed down to the control logic. Thus as the PC counts, the instructions of a program are completed.</p><p id="3128ff72-df88-43f3-8741-8954d367540b" class="">Just how registers can load a value by toggling a control pin low, the PC can interrupt its counting, skip to a specified value on its inputs, and then resume counting. Let’s look at an example:</p><div id="4635dec2-f918-4296-a2a7-1056ba482e32" class="column-list"><div id="67c5dadc-8fd0-442a-8a98-b1198ebc4106" style="width:62.5%" class="column"><figure id="6a443f81-5c1a-4c1b-8e0f-e7fc61e48a0b" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%204.png"><img style="width:443px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%204.png"/></a></figure></div><div id="08f0b846-2c9a-4c2d-b830-067bcd883922" style="width:37.5%" class="column"><p id="ecdcf9aa-79ac-4448-8cb8-3ef7d4d3431e" class="">We set some binary digits on our PC’s input. If the counter is not to load, then it counts as regular. But when we instruct the counter to load, its input overwrites the current PC value on the next clock (just like a register). The key difference is that once we set the load signal off, the counter <em>continues counting from the loaded value</em></p></div></div><p id="e0edd390-79be-4368-ba37-78e9dea45139" class="">So our program counter has <strong>jumped </strong>to a specified value! This sequence is classified by a jump instruction. Let’s look at the implications of this by considering some programs.</p><div id="82de279b-c43d-4449-9561-de83abcdf967" class="column-list"><div id="6668de3e-f3dc-41db-9ac3-45c7e59640a0" style="width:25%" class="column"><figure id="775b5119-b650-48e3-ac8b-d3d4ff655ea0" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%205.png"><img style="width:170px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%205.png"/></a></figure></div><div id="fcd2acf5-b7cf-4824-9918-e366eb075d64" style="width:75%" class="column"><p id="cca85232-3c93-4e55-8685-4bc2e75c283f" class="">In a sequential program like this, the jump instruction holds little value to us. That’s because each operation is intended to be done after the previous, so jumping around steps is useless. Now let’s consider a <strong>conditional program </strong>instead.</p></div></div><hr id="03c5bb51-7155-4e7c-83c5-2d86eeba1a2a"/><div id="49350847-a649-42b8-b530-5d6985e9798f" class="column-list"><div id="91d3fb0f-ee5d-4a53-9448-623b1f15946b" style="width:31.25%" class="column"><figure id="27ae5396-2036-4aba-855c-92fee2f5056b" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%206.png"><img style="width:191px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%206.png"/></a></figure></div><div id="3fc1c575-eaf5-4554-9a49-c478a243009b" style="width:68.75%" class="column"><p id="6a0ed3e5-9ef2-48a9-a305-ae950314971a" class="">This is slightly more intricate. If we go through the program sequentially, then we’ll end up executing the if-statement block anyways. You may start to see how the jump instruction can help us.</p><p id="a41f556c-9eea-4747-ab27-8fec29b60863" class="">
+</p></div></div><hr id="bfcac79b-c736-4aaa-8dcc-40c9e2335fc8"/><figure id="d7259025-9c07-4985-9077-35b6114e7c79" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/C582EC64-7764-49CF-B010-D8FD3DF4D3F7.jpeg"><img style="width:1465px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/C582EC64-7764-49CF-B010-D8FD3DF4D3F7.jpeg"/></a></figure><p id="a14094c4-44e2-4f0e-a62e-066b47abc7e2" class="">Here, I’ve partitioned the program specifically, such that each “chunk” of the program is in its own location of memory. The 4-bit number to the left of each instruction is a specific address in memory for this demo.</p><p id="dcdce843-5b3c-4985-ab17-a18f51f788e2" class="">Since <code>x+y</code> is indeed less than z, our CPU is told to jump to memory address 1000. The PC does as such, and begins execution from 1000, where it will print “in range”. However, we’re not done yet. If we refer to the original python code, the <code>print(z)</code> operation was to execute <em>regardless </em>if <code>x+y&lt;z</code>. Thus, we need to <strong>jump back </strong>to the end of the if statement, which is at 0011. </p><figure id="7b4f8653-3425-4ab0-97bb-9fb36bf27f3f" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/2EB02EE2-4C1F-46DE-AC43-7D2854A2C029.jpeg"><img style="width:1218px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/2EB02EE2-4C1F-46DE-AC43-7D2854A2C029.jpeg"/></a></figure><p id="b0cab5ec-bc72-4a0d-8f11-ba073a0ba050" class="">And here’s our final “program”! We see that if <code>x+y&lt;z</code> is <strong>false</strong>, the program counter will just increment from 0010 to 0011, printing <code>z</code> without executing the if-statement block.  If <code>x+y&lt;z</code> is <strong>true</strong>, our counter must jump to a specified location in memory, execute <code>print(&quot;in range&quot;)</code>, and then jump back to 0011 to print <code>z</code>. </p><h2 id="8a4a18ce-4579-45c6-8d82-c1a582f79dba" class="">Implementing Jumps</h2><p id="799e36c3-70a9-4026-ba55-fc79f2433770" class="">So I’ve introduced the concept of jumping around in a program, and how we can use it to run conditional programs with if-statements. The question is, how do we create a circuit to do so for this architecture?</p><p id="5844bed6-1442-41e1-a974-50ff73d69887" class="">Let’s take a look at what we’re implementing here:</p><figure id="127e2ed4-8057-4c36-8a67-3ff9fba3876a" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>if (A condition B): jump to XXXX</mtext></mrow><annotation encoding="application/x-tex">\text{if (A condition B): jump to XXXX}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">if (A condition B): jump to XXXX</span></span></span></span></span></span></div></figure><p id="a3465f7b-af7e-410e-88a4-4116010c5681" class="">We assume that our condition has been set up in advance. For example, if we want to do something if <code>x &lt; 4</code>, then we’ve loaded x and 4 into their respective registers (A and B), and the ALU’s comparator has stored the relation between the two; for this we’ll use the following convention:</p><div id="f60a3fbf-e880-4320-8cbd-c88c8bfb088e" class="column-list"><div id="9c0e5c09-4e14-4bbd-88b5-424d05d7421f" style="width:31.25%" class="column"><figure id="56fcc101-81fa-4347-92a5-692700cec59f" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%207.png"><img style="width:258px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%207.png"/></a></figure></div><div id="a8017d89-5e17-43e4-8d13-31d4457ba343" style="width:68.75%" class="column"><figure id="ee9c2e2e-7e08-4378-814c-1429bded72d5" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%208.png"><img style="width:336px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%208.png"/></a></figure><p id="e532582e-3e9a-4ac6-8a1f-c34008e6c85d" class="">
+</p></div></div><p id="c50e6732-b990-4536-9e85-3720c9e465a9" class="">So the ALU has told us the relation between A and B, but we need to compare this ALU output with what the programmer has specified. So in memory, our program must store 01, 11, or 10 to check if it matches with the ALU’s statement. </p><figure id="7f3b8086-6e50-435c-9c4a-af1b7057168b" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>step(8) = &lt;INSTRUCTION (4)&gt; &lt;DATA (4)&gt;</mtext></mrow><annotation encoding="application/x-tex">\text{step(8) = &lt;INSTRUCTION (4)&gt; &lt;DATA (4)&gt;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">step(8) = &lt;INSTRUCTION (4)&gt; &lt;DATA (4)&gt;</span></span></span></span></span></span></div></figure><p id="93db80f7-98fb-4e88-8688-a1cc284bbef7" class="">In our CPU, each step is 8-bits long. As per the CPU’s architecture, the 4 MSBs (most significant bits) represent the instruction. Letting 00 become an arbitrary prefix, we set 00<strong>01</strong>, 00<strong>11</strong>, and 00<strong>10</strong> to represent <code>if A&lt;B</code>, <code>if A=B</code>, and <code>if A&gt;B</code> respectively. Notice how the last two bits of these instruction sets align with the ALU’s output. </p><p id="a98dddcf-6e36-4785-a3c2-e61cb61270f0" class="">The 4 LSBs (least significant bits), which hold instruction data, are set to the jump address where the if-statement block is located in memory.</p><hr id="904230c2-f751-4130-8f84-efb6e425369c"/><p id="021774e0-4ee5-4b55-ac31-58db14952c83" class="">That was a lot to unpack, so let’s go through a quick example. Suppose register A holds x = 3, and register B holds 4. Thus the ALU outputs 01.</p><p id="87df63a7-8270-4df5-870b-afa9bb077763" class="">Now say that our programmer wanted to jump to memory location 1011 if x &lt; 4. This step would be “compiled” down into machine language as such:</p><figure id="6a64db2a-c730-4084-a033-b9f9674bfe0c" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>00(01)  1011</mtext></mrow><annotation encoding="application/x-tex">\text{00(01) }\space\text{1011}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">00(01) </span></span><span class="mspace"> </span><span class="mord text"><span class="mord">1011</span></span></span></span></span></span></div></figure><p id="260c2719-6c82-463c-8983-cf6985e130b5" class="">Notice the 01 in parenthesis since we were checking a <code>&lt;</code> relation. </p><p id="1a7d14ef-3c1d-48a6-a79e-0a1750df0bb3" class="">In this case, the programmer is “asking” for (01) and the ALU is indeed outputting 01. This means x &lt; 4 is true! So we would need to jump to 1011.</p><p id="966bd42a-7101-45ae-89eb-a79bee80ba85" class="">Suppose in memory we instead wrote <code>00(10) 1011</code>. In this case, (10) is not the same as 01 — the programmer is asking to jump if x &gt; 4, but x is actually less than 4. Thus we would not jump and simply increment to the next step.</p><hr id="3bccf041-d9b5-45da-bd60-84731a93d9d1"/><p id="13bf9bb7-f3fc-41de-a6fa-e52947d56872" class="">We’ve now greatly simplified our task by breaking it down into three steps:</p><ol type="1" id="b305a56a-35c0-4052-bc13-7edbcff92885" class="numbered-list" start="1"><li>If the instruction is other 0001, 0011, or 0010, extract the 1st and 2nd bit (2 LSB) from the step to obtain either 01, 11, or 10 respectively</li></ol><ol type="1" id="b5e1fa7a-104b-43bd-ae47-96f69c08f14a" class="numbered-list" start="2"><li>Assuming the comparison has been set up beforehand, obtain the ALU value (either 01, 11, or 10)</li></ol><ol type="1" id="8a08247c-0ea9-4d1e-b26b-1fd28ee11a26" class="numbered-list" start="3"><li>If the ALU output aligns with our extracted bits, jump to the specified address in the step (4 LSB).</li></ol><hr id="e6075167-4445-4dfe-8fba-c7e8e1ff6e80"/><p id="6cce60a3-55ee-4759-b971-7b753b291e88" class="">Now that we’ve broken down this if-statement step, it’s very simple to create a circuit for it:</p><figure id="9e197d19-2942-4bd0-947e-f9c4c210224f" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%209.png"><img style="width:608px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%209.png"/></a></figure><p id="a7847b18-f980-4aa3-b83f-73a5fc1c3a10" class="">
+</p><p id="869758a5-4f3e-4499-bd1c-ee32409aee17" class="">We saw earlier that regardless of if we hold some value on the PC’s inputs, the value will only load once the load pin is enabled (for the 74LS168 counter, toggled low). </p><p id="71d89768-b192-4f1c-a504-1cbb46c6a65b" class="">Convince yourself that the jump signal is only held low assuming the following conditions are met;</p><ol type="1" id="e4fa67b8-d5b9-462b-abe4-7a648ec9632a" class="numbered-list" start="1"><li>The 2 MSB’s of the instruction is equal to 00</li></ol><ol type="1" id="019f98bd-5834-4cd6-8981-6fd703673861" class="numbered-list" start="2"><li>The 2 LSB’s of the instruction is equal to the ALU’s comparison</li></ol><p id="46767995-66e2-4093-aed7-0d789de4e4ac" class="">Tying this jump signal to our program counter will complete our implementation, with the 4 LSB’s of our step connected to the jump inputs. This circuit is deceptively simple, but it took a lot to get here. The crux of the problem lies with being able to partition memory to allow for this (this is what your compiler does).</p><hr id="3bc83184-b92e-4148-8fd5-44a9a63116b9"/><h3 id="e645bf2d-8171-427e-8156-47dd23af7d53" class="">One Last Example</h3><p id="b8349142-f29d-4e7b-aacc-6deeddea4dbe" class="">Let’s resolve any confusion with one last example:</p><pre id="13dc5405-f729-4a35-886c-8a7842449599" class="code"><code>x = 0
+while (x &lt; 10):
+	x += 1
+print(x)</code></pre><p id="e6e05331-72e2-4470-9ab5-18b63f3ac2a3" class="">While staying true to Ben Eater’s opcode and instructions, we can come up with the following:</p><figure id="e664250b-3952-41f0-a630-9813cb540aa3" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%2010.png"><img style="width:760px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%2010.png"/></a></figure><ol type="1" id="92b1213f-3348-4c3e-a51a-7f65d701ac06" class="numbered-list" start="1"><li>The program counter begins at 0000 and then 0001. Since the CPU has no intrinsic way of loading an 8 bit value to the registers, we instead pass down 4-bit pointers to other spots in memory, which hold 8 bit values.  You can see this by the highlights, and how “load register A with x” actually means “load register A with whatever is in memory 1110”, which in this case = 0. The same applies for loading register B with 10.</li></ol><ol type="1" id="5f150e99-1966-40cf-b9f7-f7dda3ed62c0" class="numbered-list" start="2"><li>Next, we use our newly created expression “IF A &lt; 10 JUMP TO 0110” or <code>00010110</code>. </li></ol><ol type="1" id="ba1f0447-44b7-4883-9bd0-30b2b045a9c5" class="numbered-list" start="3"><li>Since A (zero) &lt; 10, our program counter would jump to 0110, where the next step becomes to increment A. Since the registers are not built in with any increments, we use a series of elementary instructions to complete it:<ol type="a" id="d3485699-949e-4694-88a1-c5c90443bd16" class="numbered-list" start="1"><li>First, register B (which once held 10, is overwritten with “FULL”, which equals 11111111)</li></ol><ol type="a" id="5f6f8840-6853-40da-b826-420a9a57185d" class="numbered-list" start="2"><li>Subtracting B from A (by two’s complement) means that A will be incremented by 1</li></ol><ol type="a" id="300a75ce-76ab-4cd7-a230-6d44777f2aea" class="numbered-list" start="3"><li>Lastly, return the ALU’s output to A</li></ol></li></ol><ol type="1" id="83b8fc96-557e-4764-890a-f22f12d919eb" class="numbered-list" start="4"><li>The final step is to set a default jump back to 0001 and set B to 10 again for our comparison.</li></ol><hr id="a8f1466d-d253-41bf-a52b-752fa9d52dc6"/><p id="724d8795-a53c-47d8-a597-7342acd8cb91" class="">Let’s take a deep breath before moving on — we just added conditional logic to this CPU! Here’s the final block diagram, including our newly minted <code>JUMP?</code> block.</p><figure id="88ee8cd6-2582-474a-815b-3622c5244808" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%2011.png"><img style="width:1084px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/Untitled%2011.png"/></a></figure><p id="b4124a39-b0cf-4f93-a30f-1897c862d1ac" class="">Again, I’ll make sure to add a picture of the module I made ASAP.</p><h1 id="f7f9ec42-676f-4a2a-8f70-14e68c0bf4dc" class="">3. Further Development</h1><p id="3955bb07-6d55-4094-96f9-940dd2dcc722" class="">There’s a lot more that I’ve looked into and created for this computer, but this post has gotten lengthy enough. I was going through some old plans and found some notes on how to implement a 256 byte RAM instead of the current 16 byte RAM. Perhaps this little sketch may give you some ideas. Some other changes I made which I want to note but can’t delve into are:</p><ol type="1" id="19723307-4025-45c9-b6f4-72bf7fb510c4" class="numbered-list" start="1"><li>16x2 Character LCD Implementation </li></ol><ol type="1" id="a5f9d908-9bf7-4fb6-b7fd-e7af47741317" class="numbered-list" start="2"><li>Reducing Instruction Fetch Cycle by 66% (this was done by creating a dedicated instruction bus)</li></ol><figure id="46b2e72d-dec5-4f07-8dbd-23bc2aef9054" class="image"><a href="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/2765389F-885D-41A3-B9F0-B4DB6EDFE386.jpeg"><img style="width:1564px" src="8-Bit%20Computer%207f4aad3ee78c40808551b3a7224b36e5/2765389F-885D-41A3-B9F0-B4DB6EDFE386.jpeg"/></a></figure><p id="ad99f7d4-5796-4119-b0f4-24e5ffdff6d5" class="">I hope you enjoyed reading, and learned something new about how computers <strong>really </strong>work. Perhaps the idea of what a “program” really is has changed, like it did for me. In fact, pursuing this whole project made me more appreciative of how much our processors do that we don’t get to see — for example, the implementation of recursion! For now, any increasingly-complex work will be on standalone CPU’s (stares at Z80/8008), or on FPGA’s (which I hope to post soon!).</p><p id="b6dcd6af-8454-4358-94d6-3fce4cf61447" class="">
+</p><p id="a3311aae-573b-41e4-9010-da6217580699" class="">Best,</p><p id="08acf49a-5638-4c6d-9534-1aa7b7611b48" class="">Ebrahim</p></div></article></body></html>

@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Wireless Energy Transfer</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2fbd8bfd-8867-42c0-96b1-b6cf0057ba85" class="page sans"><header><h1 class="page-title">Wireless Energy Transfer</h1></header><div class="page-body"><p id="ff710197-167e-444a-b05d-fa2bb2d45a1f" class="block-color-yellow_background"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Project Overview:</mtext></mrow><annotation encoding="application/x-tex">\text{Project Overview:}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">Project Overview:</span></span></span></span></span></span><span>﻿</span></span> </p><figure id="5ff32d0e-e737-45c6-bc0e-868ca77f4fb1" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_6.47.57_PM.png"><img style="width:1929px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_6.47.57_PM.png"/></a></figure><p id="1b32c690-a985-483d-84d4-e68be4ecd39f" class="block-color-yellow_background"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Demonstrated Skills:</mtext></mrow><annotation encoding="application/x-tex">\text{Demonstrated Skills:}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text"><span class="mord">Demonstrated Skills:</span></span></span></span></span></span><span>﻿</span></span> </p><ol type="1" id="6cddd42e-1e80-4096-bebd-7c4b55c2819b" class="numbered-list" start="1"><li>Soldering + Circuit Design</li></ol><ol type="1" id="697d80d2-c07b-4747-9e87-0c0fe2633b74" class="numbered-list" start="2"><li>Rapid Prototyping</li></ol><ol type="1" id="e191bd69-c482-4b91-8688-58c8d30bd121" class="numbered-list" start="3"><li>Lab Techniques (oscilloscope, multimeter, etc.)</li></ol><ol type="1" id="c0a5ffbc-e0a7-407a-bcdc-f6dc5baa5197" class="numbered-list" start="4"><li>Applying theory into practice</li></ol><p id="cb5564cd-8119-47b2-afef-54f8571712d2" class="block-color-yellow_background"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>History + Outline: </mtext></mrow><annotation encoding="application/x-tex">\text{History + Outline: }</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">History + Outline: </span></span></span></span></span></span><span>﻿</span></span></p><p id="9c881eaa-e6a9-4acd-b1b2-db7720f8c0a6" class="">This post is presented as a “lesson”, structured in a similar way to my presentation to UBC’s University Transition Program students about this project. Here, I outline my thinking as to how I created this circuit using only PHYS 158 and MATH 152 background knowledge. </p><p id="b447afec-127c-40d0-8ef5-c2a1b0a07d42" class=""><strong>If you’d like to skip directly to the final construction, scroll to “Automatic Charging”. </strong></p><hr id="8a346cd2-e5cc-498b-80bb-d345653e024a"/><h1 id="2f46b6cc-1ca5-4c86-be84-572bd08b7fdb" class="">1. Introduction</h1><p id="3dc891c5-5adf-40c2-8def-985000e04e0e" class="">First, a little insight into the “big picture” of wireless energy transfer. Our goal is to convert electrical energy (Energy A) into some other energy (Energy B) that can travel through air. We also need to construct a receiver that can convert the transmitted Energy B <em>back </em>into electrical energy. </p><figure id="fe309a06-7fcb-41ba-b6a5-d70e4ba55753" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi><mtext> (transmitter), </mtext><mi>B</mi><mo>→</mo><mi>A</mi><mtext>(receiver)</mtext></mrow><annotation encoding="application/x-tex">A \rightarrow B \text{ (transmitter), } B \rightarrow A \text{(receiver)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord text"><span class="mord"> (transmitter), </span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mord text"><span class="mord">(receiver)</span></span></span></span></span></span></div></figure><p id="f8e5a8e6-9c88-486c-87a2-c5ca40fb73b2" class="">We need to choose Energy B wisely though, as the conversion from A to B and back again could become extremely inefficient. There are several possible types of energy that can serve Energy B’s purpose, for example light energy. We could use a flashlight (transmitter) and a solar panel (receiver), but you can probably think of several reasons why this is not used; in an already lit-room, the receiver would receive energy regardless of the transmitter. </p><p id="f79dd165-6e9d-4bc2-ba49-ec4bc4f53fa9" class="">This is why we use magnetic fields to store energy — in fact, magnetic fields are produced as a result of moving charges (current). They also easily travel through air undisturbed, work at small scales, and are a relatively efficient way from going to electrical energy and back.</p><p id="ef1351f2-3d2a-4cee-afef-c20695ea4dc2" class="">
+</p><p id="cd37b832-d378-454e-8d4a-41f6541407a6" class="block-color-pink_background"><strong>Key Takeaway 1: </strong>We will use magnetic fields, as it can be efficiently converted to and from electrical energy, and it can travel through air undisturbed at close ranges.</p><h1 id="62bf1310-051d-4315-85f7-c4940fdf662b" class="">2. Receiver</h1><p id="280aac08-6a89-4693-8415-c65d48745096" class="">I’m going to begin with the receiver, and that will later lead into how the transmitter should be constructed. First, we need to know that the induced EMF (proportional to induced current) within a closed loop is opposite to the rate of change of the magnetic flux through the loop.</p><figure id="5aa2d105-8a15-4302-ae11-521c59904c29" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>ε</mi><mo>=</mo><mo>−</mo><mfrac><mrow><mi>d</mi><msub><mi>ϕ</mi><mi>B</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo separator="true">,</mo><msub><mi>ϕ</mi><mi>B</mi></msub><mo>=</mo><mi>B</mi><mi>A</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\varepsilon = -\frac{d\phi_B}{dt}, \phi_B = BA\cos\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">ε</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.0574399999999997em;vertical-align:-0.686em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span></span></div></figure><p id="516cdd59-30ba-4a77-9782-17c54e56ac1f" class="">There’s a little bit of intuition behind this formula - the <strong>induced EMF </strong>within the loop is made to oppose incoming changes in the magnetic flux as a mechanism to return to equilibrium. A similar analog is how the addition of reactants/products shift the reaction in certain directions (think about Le Chatelier’s Principle, or the formula for inductors). </p><hr id="d1fc21de-ed95-4e4d-a847-4f18b0425de5"/><p id="ba7a51bc-1a14-4c75-aa9f-0c700b3a34a3" class="">If we produce a constant magnetic field by running direct current through a loop, the induced EMF will be the derivative of a constant and hence will be zero. This is why we need to produce a <strong>constantly changing </strong>magnetic field, such that the induced EMF does not settle at an equilibrium.</p><p id="cfeada79-d6ad-4769-a755-19548e9d2f4e" class="">Below is an illustration showing that if we produce a <strong>sinusoidal </strong>magnetic field, the induced EMF will closely follow. </p><figure id="bcb5ab70-e4fa-4216-91e2-89611cb96140" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_7.33.00_PM.png"><img style="width:1340px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_7.33.00_PM.png"/></a></figure><p id="e3507fd5-77c7-45ea-b55a-4f5942cab622" class="">
+</p><p id="d9b15c93-a486-4282-bc8d-955454ae3892" class="block-color-pink_background"><strong>Key Takeaway 2: </strong>To create an induced current on the receiver, our transmitter must create some constantly changing magnetic field. Creating a sinusoidal pattern is the most feasible method. </p><h1 id="91127ae5-02fb-4537-bb23-064148e6c488" class="">3. Transmitter</h1><p id="992ef0b3-26a9-4be2-94c0-ddc16cf521aa" class="">Finally, we understand creating the main part of this project, the transmitter circuit. Above, we mentioned that we needed to create an alternating magnetic field. </p><p id="2fce882a-c809-45b8-b227-819e3e6189dc" class="">As mentioned, moving charges (current), create magnetic fields automatically. By passing current through a <strong>coil </strong>of wire, we focus the created magnetic field in the direction through the coil (right).</p><p id="a50d134f-5159-4156-9a02-96763a3a1c0a" class=""><em>Image Credit: </em><em><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/electric/indsol.html">http://hyperphysics.phy-astr.gsu.edu/hbase/electric/indsol.html</a></em></p><figure id="3b379a53-9b17-4a9c-8f63-7a912f8b2ff0" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/images.png"><img style="width:384px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/images.png"/></a></figure><hr id="0354bbac-058d-4cd3-9ba0-a1646430ef58"/><p id="f5224ebf-6b54-4a52-9343-17088c1eb128" class="">The formula for an induced magnetic field is given by <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mi>n</mi><mi>I</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(t) = \mu_0 n I(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>, where I(t) is the current through the coil. For fun, I’ve attached the proof of the formula (this assumes an infinitely long solenoid), although a more accurate version should be show below, where x is half the length of the solenoid, a is the radius, and n is the turn density.</p><figure id="c53cebc4-5c93-4baa-88eb-a83d66574bfa" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>B</mi><mrow><mi>c</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>r</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mi>n</mi><mi>I</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>⋅</mo><mfrac><mi>x</mi><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>a</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">B_{center}(t) = \mu_0 nI(t) \cdot \frac{x}{\sqrt{x^2+a^2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ce</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">er</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.03756em;vertical-align:-0.93em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.196611em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.913389em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.873389em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12661100000000003em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><ul id="0eea4aa7-6ec2-4909-a78d-b8e3fada04fc" class="block-color-red_background toggle"><li><details open=""><summary><strong>Proof using PHYS 158 techniques (click to hide): </strong></summary><figure id="5aad87da-2d3b-476a-904c-65ebb8a0c911" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/87F512B0-F902-44EF-AD61-388A684780B6.jpeg"><img style="width:1274px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/87F512B0-F902-44EF-AD61-388A684780B6.jpeg"/></a></figure></details></li></ul><p id="eb4ac0a9-b72a-42e5-9231-f559949c7d65" class="">
+</p><p id="c06d16d9-b9d5-448b-a053-96c231a257e3" class="">We could put in a lot more physics and math into a more accurate expression for magnetic field, but what’s important is that we understand that<strong> magnetic field from a loop is roughly proportional to the current in the loop. </strong>If we return to our previous finding that we require an alternating magnetic field, we can now conclude that:</p><p id="e609f7a7-e659-423b-9fb1-1b2dcf4dae8c" class="">
+</p><p id="f000fcea-8301-40d1-b379-0e55b29343ef" class="block-color-pink_background"><strong>Key Takeaway 3: </strong>Created magnetic field from a coil is roughly proportional to current in a loop. Thus, to create an alternating magnetic field, we need an alternating current.</p><hr id="68a86506-b6b7-4653-9e46-77ee3229b677"/><h2 id="d369b9b5-a52c-470d-818a-b5629a741307" class="">The (R)LC Oscillator</h2><p id="a0384f18-6476-4fa1-b3d9-6844b3e01023" class="">The word “alternating current” might already strike a chord — to build our transmitter, why don’t we just use AC? That’s exactly what we’ll be doing, but we can’t just use the dangerous and low-current 120V AC from the outlet. Instead, our goal is to convert the standard 5V 1A DC current (USB output) into a safe AC current. </p><p id="c1f9774b-0df8-4546-a696-fa51ddbde849" class="">Here’s where the problem starts to get a little more complex. There are many ways to convert from DC to AC current, but with the parts I had on hand, I decided to make use of an LC oscillator.</p><figure id="dbc17c21-c109-4ee3-8149-9398a0c467f2" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/DBF17E38-E305-4CD6-8B53-D7CDBB2BA35D.jpeg"><img style="width:576px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/DBF17E38-E305-4CD6-8B53-D7CDBB2BA35D.jpeg"/></a></figure><p id="fc3bfd02-f26d-4e53-b1ce-c0628dc9dd79" class="">an LC oscillator is composed of a capacitor and inductor in parallel. After charging the capacitor beforehand, when the switch is closed at t = 0, it oscillates sinusoidally (red). However, in practice, there always exists some internal resistances even when a resistor is not in the circuit. Thus, an LC oscillator tends to see a <em>dampened </em>oscillation (blue) which decays to 0 quickly. This modification is called the RLC oscillator (R for resistor).</p><p id="3da35be3-2285-467e-9336-136fb6dec34f" class="">To find the period of this dampened oscillation (you’ll see why soon), I decided to take a stab at the RLC differential equation. Although there are several ways to end up with a final expression for current, I used a linear system of D.E.’s using MATH 152 techniques.</p><ul id="60dad486-2366-430f-b1bf-d5b8eeeab094" class="block-color-red_background toggle"><li><details open=""><summary>RLC Differential Equations<strong> (click to hide): </strong></summary><figure id="6b130492-bcbb-4612-b95e-05c1953410de" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/152_Fundamentals-26.jpg"><img style="width:2244px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/152_Fundamentals-26.jpg"/></a></figure><figure id="81720c07-8c5c-4579-8283-03bace9498be" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/152_Fundamentals-27.jpg"><img style="width:2244px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/152_Fundamentals-27.jpg"/></a></figure><figure id="0cca3137-944d-489a-8f9f-110d8d4f755c" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_9.06.23_PM.png"><img style="width:1005px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_9.06.23_PM.png"/></a></figure></details></li></ul><p id="ecb56b50-dd64-44d9-bbdc-330584c5d98f" class="">It was quite the journey getting to the final expression, watching the expressions unravel into complex number madness and then simplify back down.</p><figure id="5c022180-c2be-4ee3-9429-023cbf43d397" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_9.14.09_PM.png"><img style="width:882px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_9.14.09_PM.png"/></a></figure><p id="02e99b99-1a25-477b-b113-e91aba9d8347" class="">Here is an output from my oscilloscope, showing the RLC oscillator in action. </p><h2 id="671f5ebe-d8bf-48e9-a105-d93e6034036e" class="">Sustained Oscillations</h2><p id="dbee2697-7675-486f-9e14-9cd85cce6f6e" class="">However, the problem with the RLC oscillator in our application is that it decays. Our circuit is not useful if our alternating current returns to 0. My proposed solution was to <strong>recharge </strong>the capacitor at the right instance, thus <strong>sustaining the LC oscillation</strong>. In the image above, you can also see in my testing where the oscillator was recharged (secondary pulse). A more concrete example is shown below:</p><figure id="5b6ddb48-40cf-414d-9526-f98ec0fa59f6" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_9.34.03_PM.png"><img style="width:1059px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_9.34.03_PM.png"/></a></figure><p id="37f3ce0d-bb7d-48c9-ba6b-6468bda6891c" class="">Here, the collective solid wave would be the theoretical result of the “recharged” RLC oscillator. The specific colored dashed lines indicate what the oscillation would look like had we not recharged the capacitor at set intervals.</p><p id="abe1d3cf-f27a-40a1-adee-367bda68ecf9" class="">Also highlighted are the recharge points, after one period of an RLC oscillation. Though not perfect, and there would exist some slight delay from charging the capacitor, I decided to go with this method as it would work with the parts I had available.</p><p id="d210d3e0-07bf-4d3b-8971-46e74d4de313" class="">To instill some trust to my readers, I’ll skip to the end briefly and show the recharging sequence does in fact work, and creates quite a clean sinusoidal current.</p><figure id="852bc432-4ef5-4110-8b9f-58a1c7002354" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/CCF18D03-DBEA-4D87-BC1E-D103E00CC0BD.jpeg"><img style="width:4032px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/CCF18D03-DBEA-4D87-BC1E-D103E00CC0BD.jpeg"/></a></figure><figure id="d7c377b1-b8cb-4625-bb7b-8560c69596cc" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_6.43.14_PM.png"><img style="width:938px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_6.43.14_PM.png"/></a></figure><p id="3684e3d9-b950-4796-bc9c-8d675f0b57c5" class="block-color-pink_background"><strong>Key Takeaway 4: </strong>To create a (high frequency) alternating current from a DC supply, one way is to charge an RLC oscillator, let it oscillate, and then recharge — repeating such a sequence leads to a sustained sinusoidal output.</p><hr id="85799e22-1dad-4c92-8c2b-7e38cc6d14fe"/><h2 id="e418f108-f645-4c79-9b28-939567a63283" class="">Automatic Charging</h2><p id="b706821e-65f2-4df9-bc65-73fabfc1c196" class="">Up until this point in my testing, I had been manually recharging the capacitor by hand with a switch and letting the oscillator decay, to see a few blinks on the receiver coil’s LED. However, the last step to complete the transmitter is to automate this sequence at the right time.</p><p id="d4caee36-d40d-44e2-b04e-a15988e41252" class="">First, I replaced the switch with a charging “bridge” made from 2 NPN transistors. By setting the CHG line high, the DC current would charge the capacitor quickly. Then, by setting CHG low, the oscillation would take place.</p><figure id="50fc3aba-9ced-4bce-b177-a118aed00a70" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_10.57.39_PM.png"><img style="width:1093px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_10.57.39_PM.png"/></a></figure><p id="9ef327ea-843b-4ebf-9cf8-8d32f7d6b7bf" class="">By pulsing the CHG line on and off with the frequency <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mfrac><mn>1</mn><mrow><mi>L</mi><mi>C</mi></mrow></mfrac><mo>−</mo><mfrac><msup><mi>R</mi><mn>2</mn></msup><mrow><mn>4</mn><msup><mi>L</mi><mn>2</mn></msup></mrow></mfrac></mrow></msqrt><mo>⋅</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sqrt{\frac{1}{LC} - \frac{R^2}{4L^2}}  \cdot \frac{1}{2\pi}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.84em;vertical-align:-0.5692900000000001em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.27071em;"><span class="svg-align" style="top:-3.8em;"><span class="pstrut" style="height:3.8em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.91642em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463142857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463142857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.2307099999999997em;"><span class="pstrut" style="height:3.8em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.8800000000000001em;"><svg width='400em' height='1.8800000000000001em' viewBox='0 0 400000 1944' preserveAspectRatio='xMinYMin slice'><path d='M983 90
+l0 -0
+c4,-6.7,10,-10,18,-10 H400000v40
+H1013.1s-83.4,268,-264.1,840c-180.7,572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7
+s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,-7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744
+c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
+c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
+c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
+c53.7,-170.3,84.5,-266.8,92.5,-289.5z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5692900000000001em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><span>﻿</span></span>, we let the LC oscillator run for one period before recharging. With this, we obtain the final circuit schematic:</p><figure id="f3f348b3-e379-4855-9c49-db92a9d27fd3" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_10.58.07_PM.png"><img style="width:763px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-13_at_10.58.07_PM.png"/></a></figure><p id="5afe3e0c-fb78-4418-b671-acc2275b3203" class="">It should be noted that ideally, the square wave should be non-uniform, as the time it takes to recharge the capacitor is different than the period of one oscillation. Using a simple microcontroller to more precisely pulse the CHG line could result in a nicer sinusoidal current. I recommend this modification, and may try it in the future with an ATTINY85. However, as shown previously, the final wave is clean enough for our purposes.</p><h1 id="f1c5cebf-335a-4a3f-bf84-feed1346af26" class="">4. Final Build</h1><p id="6d2a7ae2-ad46-4950-9eef-d52b61a7a1cc" class="">Once we’ve finalized the 555 timings, our project is done! Even with a relatively thick mousepad between the coils, the receiver LED still shines bright! </p><figure id="2a0f7c11-97e5-4bf0-a199-d34a6644bcb7" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-14_at_6.28.16_PM.png"><img style="width:1715px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-14_at_6.28.16_PM.png"/></a></figure><p id="405c8f9c-b703-4f58-988d-a5bcff153c04" class=""><strong>Note: </strong>The transistors I had used began heating up after a while, and so I placed a small heatsink over them to keep working. Although this is not a <em>recommended </em>solution, I’ve had the device on for upwards of 30 minutes without any failure, and have not had to replace any circuitry.</p><hr id="8fce2333-d216-48f1-ac85-809590c51b83"/><h3 id="e512d111-6d4a-4772-bd4f-4ddce9600482" class="">Conclusion</h3><p id="eb2a3a96-9bf8-487c-a4f2-d881c4f51144" class="">I’d like to conclude with an overview of the problem-solving strategy we took here.</p><figure id="e67e1893-6e16-48c8-802b-abb0bf3a2600" class="image"><a href="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-14_at_6.04.49_PM.png"><img style="width:883px" src="Wireless%20Energy%20Transfer%202fbd8bfd886742c096b1b6cf0057ba85/Screen_Shot_2022-07-14_at_6.04.49_PM.png"/></a></figure><p id="228ab5ba-9ddf-4a3d-800d-3155677b0078" class="">For projects like these, I recommend my readers to take a similar approach. Instead of taking on a daunting challenge, use math and physics to understand the core issue. Then, continue breaking the problem down into simpler, less-daunting steps.</p><p id="3cce93b9-ab4f-406e-b77a-a001a50590b3" class="">So that’s my attempt to build a wireless energy transmitter. It’s a simple circuit, and I think the way it works is rather intuitive. Though other circuits online may be more efficient, their exact workings can seem convoluted, especially for the application its being used in. Moreover, I’m very proud to have come up with this design on my own, using notes and deriving formulas from the things I learn in class (PHYS 158 / MATH 152). I hope you enjoyed, and took something away for any future work!</p><p id="2c9f24a6-856b-4f29-a0f7-16326591cf3e" class="">
+</p><p id="9f753abc-982c-47eb-9178-7e7d62b8ae48" class="">Best,</p><p id="063aecfa-28f3-4b08-b206-69419cc944b3" class="">Ebrahim.</p><p id="cb658a44-d14e-4963-a760-03cd1d7b5adc" class="">
+</p><p id="c585d79b-252d-4ae6-8c7c-56a5c2e1bdda" class="">
+</p></div></article></body></html>
